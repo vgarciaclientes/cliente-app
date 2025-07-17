@@ -36,6 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const nuevoCliente = {
             data: {
+                ID: generarID(),
                 Nombre: document.getElementById("nombre").value,
                 Correo: document.getElementById("correo").value,
                 Teléfono: document.getElementById("telefono").value,
