@@ -4,8 +4,6 @@ const postURL = "https://sheetdb.io/api/v1/b521jn1u4z7v0";
 document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("cliente-form");
     const tbody = document.getElementById("clientes-body");
-    
-console.log("Enviando cliente:", JSON.stringify(nuevoCliente));
 
     // Cargar datos existentes
     fetch(sheetURL)
@@ -14,16 +12,19 @@ console.log("Enviando cliente:", JSON.stringify(nuevoCliente));
             data.forEach(cliente => {
                 const row = document.createElement("tr");
                 row.innerHTML = `
-                    <td>${cliente.ID}</td>
-                    <td>${cliente.Nombre}</td>
-                    <td>${cliente.Correo}</td>
-                    <td>${cliente.Teléfono}</td>
-                    <td>${cliente.Empresa}</td>
-                    <td>${cliente.Estado}</td>
-                    <td>${cliente.Notas}</td>
+                    <td>${cliente.ID || ''}</td>
+                    <td>${cliente.Nombre || ''}</td>
+                    <td>${cliente.Correo || ''}</td>
+                    <td>${cliente.Teléfono || ''}</td>
+                    <td>${cliente.Empresa || ''}</td>
+                    <td>${cliente.Estado || ''}</td>
+                    <td>${cliente.Notas || ''}</td>
                 `;
                 tbody.appendChild(row);
             });
+        })
+        .catch(err => {
+            console.error("Error al cargar datos:", err);
         });
 
     // Generar ID único basado en timestamp
@@ -47,6 +48,8 @@ console.log("Enviando cliente:", JSON.stringify(nuevoCliente));
             }
         };
 
+        console.log("Enviando cliente:", nuevoCliente);
+
         fetch(postURL, {
             method: "POST",
             body: JSON.stringify(nuevoCliente),
@@ -56,6 +59,7 @@ console.log("Enviando cliente:", JSON.stringify(nuevoCliente));
         })
         .then(res => res.json())
         .then(response => {
+            console.log("Respuesta de SheetDB:", response);
             alert("Cliente agregado correctamente.");
             form.reset();
             location.reload(); // Recargar para mostrar el nuevo cliente
@@ -65,4 +69,4 @@ console.log("Enviando cliente:", JSON.stringify(nuevoCliente));
             alert("Hubo un error al agregar el cliente.");
         });
     });
-}); 
+});
