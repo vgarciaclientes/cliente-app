@@ -19,6 +19,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     <td>${cliente.Empresa || ''}</td>
                     <td>${cliente.Estado || ''}</td>
                     <td>${cliente.Notas || ''}</td>
+                    <td>
+                        <button onclick="editarCliente('${cliente.ID}')">Editar</button>
+                    </td>
                 `;
                 tbody.appendChild(row);
             });
@@ -32,41 +35,59 @@ document.addEventListener("DOMContentLoaded", () => {
         return 'ID-' + Date.now();
     };
 
-    // Enviar nuevo cliente
+    // Enviar nuevo cliente o actualizar existente
     form.addEventListener("submit", e => {
         e.preventDefault();
 
-        const nuevoCliente = {
-            data: {
-                ID: generarID(),
-                Nombre: document.getElementById("nombre").value,
-                Correo: document.getElementById("correo").value,
-                Teléfono: document.getElementById("telefono").value,
-                Empresa: document.getElementById("empresa").value,
-                Estado: document.getElementById("estado").value,
-                Notas: document.getElementById("notas").value
-            }
+        const idExistente = document.getElementById("cliente-id").value;
+
+        const clienteData = {
+            ID: idExistente || generarID(),
+            Nombre: document.getElementById("nombre").value,
+            Correo: document.getElementById("correo").value,
+            Teléfono: document.getElementById("telefono").value,
+            Empresa: document.getElementById("empresa").value,
+            Estado: document.getElementById("estado").value,
+            Notas: document.getElementById("notas").value
         };
 
-        console.log("Enviando cliente:", nuevoCliente);
+        const method = idExistente ? "PUT" : "POST";
+        const url = idExistente ? `${postURL}/ID/${idExistente}` : postURL;
 
-        fetch(postURL, {
-            method: "POST",
-            body: JSON.stringify(nuevoCliente),
+        fetch(url, {
+            method: method,
+            body: JSON.stringify({ data: clienteData }),
             headers: {
                 "Content-Type": "application/json"
             }
         })
         .then(res => res.json())
         .then(response => {
-            console.log("Respuesta de SheetDB:", response);
-            alert("Cliente agregado correctamente.");
+            alert(idExistente ? "Cliente actualizado." : "Cliente agregado.");
             form.reset();
             location.reload();
         })
         .catch(err => {
             console.error("Error al enviar datos:", err);
-            alert("Hubo un error al agregar el cliente.");
+            alert("Hubo un error al guardar el cliente.");
         });
     });
 });
+
+// Función para editar cliente
+function editarCliente(id) {
+    fetch(sheetURL)
+        .then(res => res.json())
+        .then(data => {
+            const cliente = data.find(c => c.ID === id);
+            if (!cliente) return alert("Cliente no encontrado");
+
+            document.getElementById("cliente-id").value = cliente.ID;
+            document.getElementById("nombre").value = cliente.Nombre;
+            document.getElementById("correo").value = cliente.Correo;
+            document.getElementById("telefono").value = cliente.Teléfono;
+            document.getElementById("empresa").value = cliente.Empresa;
+            document.getElementById("estado").value = cliente.Estado;
+            document.getElementById("notas").value = cliente.Notas;
+        });
+}
