@@ -1,3 +1,5 @@
+
+
 const sheetURL = "https://opensheet.elk.sh/1qllik4uYpXaWtRo4wEj00hY-UromJrNozlwMX4cTreg/Datos_Clientes";
 const postURL = "https://sheetdb.io/api/v1/b521jn1u4z7v0";
 
@@ -5,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("cliente-form");
     const tbody = document.getElementById("clientes-body");
 
-    // Cargar datos existentes (opcional)
+    // Cargar datos existentes
     fetch(sheetURL)
         .then(res => res.json())
         .then(data => {
@@ -28,12 +30,14 @@ document.addEventListener("DOMContentLoaded", () => {
         e.preventDefault();
 
         const nuevoCliente = {
-            Nombre: document.getElementById("nombre").value,
-            Correo: document.getElementById("correo").value,
-            Teléfono: document.getElementById("telefono").value,
-            Empresa: document.getElementById("empresa").value,
-            Estado: document.getElementById("estado").value,
-            Notas: document.getElementById("notas").value
+            data: {
+                Nombre: document.getElementById("nombre").value,
+                Correo: document.getElementById("correo").value,
+                Teléfono: document.getElementById("telefono").value,
+                Empresa: document.getElementById("empresa").value,
+                Estado: document.getElementById("estado").value,
+                Notas: document.getElementById("notas").value
+            }
         };
 
         fetch(postURL, {
@@ -43,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 "Content-Type": "application/json"
             }
         })
-        .then(res => res.text())
+        .then(res => res.json())
         .then(response => {
             alert("Cliente agregado correctamente.");
             form.reset();
