@@ -32,17 +32,19 @@ const generarID = () => {
 form.addEventListener("submit", e => {
     e.preventDefault();
 
-    const nuevoCliente = {
-        data: {
-            ID: generarID(),
-            Nombre: document.getElementById("nombre").value,
-            Correo: document.getElementById("correo").value,
-            Teléfono: document.getElementById("telefono").value,
-            Empresa: document.getElementById("empresa").value,
-            Estado: document.getElementById("estado").value,
-            Notas: document.getElementById("notas").value
-        }
-    };
+    
+const nuevoCliente = {
+    data: {
+        ID: generarID(),
+        NOMBRE: document.getElementById("nombre").value,
+        CORREO: document.getElementById("correo").value,
+        TELÉFONO: document.getElementById("telefono").value,
+        EMPRESA: document.getElementById("empresa").value,
+        ESTADO: document.getElementById("estado").value,
+        NOTAS: document.getElementById("notas").value
+    }
+};
+
 
     fetch(postURL, {
         method: "POST",
