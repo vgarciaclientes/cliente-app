@@ -20,8 +20,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     <td>${cliente.Estado || ''}</td>
                     <td>${cliente.Notas || ''}</td>
                     <td>
-                        <button class="btn btn-sm btn-warning me-1" onclick="editarCliente('${cliente.ID}')">Editar</button>
-                        <button class="btn btn-sm btn-danger" onclick="eliminarCliente('${cliente.ID}')">Eliminar</button>
+                        <button class="btn btn-sm btn-warning me-1 editar-btn" data-id="${cliente.ID}">Editar</button>
+                        <button class="btn btn-sm btn-danger eliminar-btn" data-id="${cliente.ID}">Eliminar</button>
                     </td>
                 `;
                 tbody.appendChild(row);
@@ -73,6 +73,19 @@ document.addEventListener("DOMContentLoaded", () => {
             alert("Hubo un error al guardar el cliente.");
         });
     });
+
+    // Delegar eventos para botones de editar y eliminar
+    document.addEventListener("click", function (e) {
+        if (e.target.classList.contains("editar-btn")) {
+            const id = e.target.getAttribute("data-id");
+            editarCliente(id);
+        }
+
+        if (e.target.classList.contains("eliminar-btn")) {
+            const id = e.target.getAttribute("data-id");
+            eliminarCliente(id);
+        }
+    });
 });
 
 // Función para editar cliente
@@ -110,3 +123,4 @@ function eliminarCliente(id) {
         alert("Hubo un error al eliminar el cliente.");
     });
 }
+
