@@ -4,6 +4,8 @@ const postURL = "https://sheetdb.io/api/v1/b521jn1u4z7v0";
 document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("cliente-form");
     const tbody = document.getElementById("clientes-body");
+    
+console.log("Enviando cliente:", JSON.stringify(nuevoCliente));
 
     // Cargar datos existentes
     fetch(sheetURL)
