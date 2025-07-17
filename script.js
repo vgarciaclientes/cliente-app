@@ -12,15 +12,15 @@ document.addEventListener("DOMContentLoaded", () => {
             data.forEach(cliente => {
                 const row = document.createElement("tr");
                 
-row.innerHTML = `
-    <td>${cliente.ID}</td>
-    <td>${cliente.NOMBRE}</td>
-    <td>${cliente.CORREO}</td>
-    <td>${cliente.TELÉFONO}</td>
-    <td>${cliente.EMPRESA}</td>
-    <td>${cliente.ESTADO}</td>
-    <td>${cliente.NOTAS}</td>
-`;
+                row.innerHTML = `
+                    <td>${cliente.ID}</td>
+                    <td>${cliente.Nombre}</td>
+                    <td>${cliente.Correo}</td>
+                    <td>${cliente.Teléfono}</td>
+                    <td>${cliente.Empresa}</td>
+                    <td>${cliente.Estado}</td>
+                    <td>${cliente.Notas}</td>
+                `;
 
                 tbody.appendChild(row);
             });
