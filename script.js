@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
             console.log("Respuesta de SheetDB:", response);
             alert("Cliente agregado correctamente.");
             form.reset();
-            location.reload(); // Recargar para mostrar el nuevo cliente
+            location.reload();
         })
         .catch(err => {
             console.error("Error al enviar datos:", err);
@@ -70,4 +70,3 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 });
-
