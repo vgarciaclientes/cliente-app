@@ -39,6 +39,17 @@
                 <button type="submit" class="btn btn-primary">Agregar Cliente</button>
             </div>
         </form>
+        <form id="cliente-form">
+              <input type="hidden" id="cliente-id">
+              <input type="text" id="nombre" placeholder="Nombre" required>
+              <input type="email" id="correo" placeholder="Correo" required>
+              <input type="text" id="telefono" placeholder="Teléfono">
+              <input type="text" id="empresa" placeholder="Empresa">
+              <input type="text" id="estado" placeholder="Estado">
+              <textarea id="notas" placeholder="Notas"></textarea>
+              <button type="submit">Guardar</button>
+        </form>
+
         <!-- Tabla de clientes -->
         <div class="table-responsive">
             <table class="table table-bordered table-striped" id="tabla-clientes">
