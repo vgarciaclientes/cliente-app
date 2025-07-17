@@ -23,46 +23,42 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
 
-    // Enviar nuevo cliente
-    form.addEventListener("submit", e => {
-        e.preventDefault();
+ // Generar ID único basado en timestamp
+const generarID = () => {
+    return 'ID-' + Date.now();
+};
 
-        console.log("nombre:", document.getElementById("nombre"));
-        console.log("correo:", document.getElementById("correo"));
-        console.log("telefono:", document.getElementById("telefono"));
-        console.log("empresa:", document.getElementById("empresa"));
-        console.log("estado:", document.getElementById("estado"));
-        console.log("notas:", document.getElementById("notas"));
+// Enviar nuevo cliente
+form.addEventListener("submit", e => {
+    e.preventDefault();
 
-        const nuevoCliente = {
-            data: {
-                ID: generarID(),
-                Nombre: document.getElementById("nombre").value,
-                Correo: document.getElementById("correo").value,
-                Teléfono: document.getElementById("telefono").value,
-                Empresa: document.getElementById("empresa").value,
-                Estado: document.getElementById("estado").value,
-                Notas: document.getElementById("notas").value
-            }
-        };
+    const nuevoCliente = {
+        data: {
+            ID: generarID(),
+            Nombre: document.getElementById("nombre").value,
+            Correo: document.getElementById("correo").value,
+            Teléfono: document.getElementById("telefono").value,
+            Empresa: document.getElementById("empresa").value,
+            Estado: document.getElementById("estado").value,
+            Notas: document.getElementById("notas").value
+        }
+    };
 
-        fetch(postURL, {
-            method: "POST",
-            body: JSON.stringify(nuevoCliente),
-            headers: {
-                "Content-Type": "application/json"
-            }
-        })
-        .then(res => res.json())
-        .then(response => {
-            alert("Cliente agregado correctamente.");
-            form.reset();
-            location.reload(); // Recargar para mostrar el nuevo cliente
-        })
-        .catch(err => {
-            console.error("Error al enviar datos:", err);
-            alert("Hubo un error al agregar el cliente.");
-        });
+    fetch(postURL, {
+        method: "POST",
+        body: JSON.stringify(nuevoCliente),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    .then(res => res.json())
+    .then(response => {
+        alert("Cliente agregado correctamente.");
+        form.reset();
+        location.reload(); // Recargar para mostrar el nuevo cliente
+    })
+    .catch(err => {
+        console.error("Error al enviar datos:", err);
+        alert("Hubo un error al agregar el cliente.");
     });
 });
-
