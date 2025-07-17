@@ -14,12 +14,13 @@ document.addEventListener("DOMContentLoaded", () => {
             data.forEach(cliente => {
                 const row = document.createElement("tr");
                 row.innerHTML = `
-                    <td>${cliente.Nombre}</td>
-                    <td>${cliente.Correo}</td>
-                    <td>${cliente.Teléfono}</td>
-                    <td>${cliente.Empresa}</td>
-                    <td>${cliente.Estado}</td>
-                    <td>${cliente.Notas}</td>
+               
+                    <td>${cliente.NOMBRE}</td>
+                    <td>${cliente.CORREO}</td>
+                    <td>${cliente.TELÉFONO}</td>
+                    <td>${cliente.EMPRESA}</td>
+                    <td>${cliente.ESTADO}</td>
+                    <td>${cliente.NOTAS}</td>
                 `;
                 tbody.appendChild(row);
             });
@@ -31,12 +32,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const nuevoCliente = {
             data: {
-                Nombre: document.getElementById("nombre").value,
-                Correo: document.getElementById("correo").value,
-                Teléfono: document.getElementById("telefono").value,
-                Empresa: document.getElementById("empresa").value,
-                Estado: document.getElementById("estado").value,
-                Notas: document.getElementById("notas").value
+                Nombre: document.getElementById("NOMBRE").value,
+                Correo: document.getElementById("CORREO").value,
+                Teléfono: document.getElementById("TELÉFONO").value,
+                Empresa: document.getElementById("EMPRESA").value,
+                Estado: document.getElementById("ESTADO").value,
+                Notas: document.getElementById("NOTAS").value
             }
         };
 
