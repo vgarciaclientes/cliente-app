@@ -30,9 +30,11 @@ input, select, textarea {
 button.btn-primary {
     background-color: #0052cc;
     border-color: #0052cc;
-    font-weight: 500;
+    font-weight: bold; /* Negrita */
+    color: #ffffff;     /* Blanco */
     transition: background-color 0.3s ease;
 }
+
 
 button.btn-primary:hover {
     background-color: #0747a6;
