@@ -27,6 +27,14 @@ document.addEventListener("DOMContentLoaded", () => {
     form.addEventListener("submit", e => {
         e.preventDefault();
 
+        // Debugging: log each input element
+        console.log("nombre:", document.getElementById("nombre"));
+        console.log("correo:", document.getElementById("correo"));
+        console.log("telefono:", document.getElementById("telefono"));
+        console.log("empresa:", document.getElementById("empresa"));
+        console.log("estado:", document.getElementById("estado"));
+        console.log("notas:", document.getElementById("notas"));
+
         const nuevoCliente = {
             data: {
                 Nombre: document.getElementById("nombre").value,
@@ -54,4 +62,6 @@ document.addEventListener("DOMContentLoaded", () => {
         .catch(err => {
             console.error("Error al enviar datos:", err);
             alert("Hubo un error al agregar el cliente.");
-       
+        });
+    });
+});
