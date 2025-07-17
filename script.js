@@ -27,7 +27,6 @@ document.addEventListener("DOMContentLoaded", () => {
     form.addEventListener("submit", e => {
         e.preventDefault();
 
-        // Debugging: log each input element
         console.log("nombre:", document.getElementById("nombre"));
         console.log("correo:", document.getElementById("correo"));
         console.log("telefono:", document.getElementById("telefono"));
