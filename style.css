@@ -38,6 +38,29 @@ button.btn-primary:hover {
     background-color: #0747a6;
 }
 
+/* Estilos para botones de acción */
+button.btn-warning {
+    background-color: #f0ad4e;
+    border-color: #eea236;
+    color: #fff;
+}
+
+button.btn-warning:hover {
+    background-color: #ec971f;
+    border-color: #d58512;
+}
+
+button.btn-danger {
+    background-color: #d9534f;
+    border-color: #d43f3a;
+    color: #fff;
+}
+
+button.btn-danger:hover {
+    background-color: #c9302c;
+    border-color: #ac2925;
+}
+
 .table {
     background-color: #ffffff;
     border-radius: 8px;
