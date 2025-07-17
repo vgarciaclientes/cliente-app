@@ -12,8 +12,10 @@
 <body>
     <div class="container py-4">
         <h1 class="mb-4 text-center">Gestión de Clientes</h1>
+
         <!-- Formulario de entrada -->
         <form id="cliente-form" class="row g-3 mb-4">
+            <input type="hidden" id="cliente-id">
             <div class="col-md-4">
                 <input type="text" class="form-control" placeholder="Nombre" id="nombre" required>
             </div>
@@ -36,18 +38,8 @@
                 <input type="text" class="form-control" placeholder="Notas" id="notas">
             </div>
             <div class="col-12 text-end">
-                <button type="submit" class="btn btn-primary">Agregar Cliente</button>
+                <button type="submit" class="btn btn-primary">Guardar Cliente</button>
             </div>
-        </form>
-        <form id="cliente-form">
-              <input type="hidden" id="cliente-id">
-              <input type="text" id="nombre" placeholder="Nombre" required>
-              <input type="email" id="correo" placeholder="Correo" required>
-              <input type="text" id="telefono" placeholder="Teléfono">
-              <input type="text" id="empresa" placeholder="Empresa">
-              <input type="text" id="estado" placeholder="Estado">
-              <textarea id="notas" placeholder="Notas"></textarea>
-              <button type="submit">Guardar</button>
         </form>
 
         <!-- Tabla de clientes -->
@@ -62,6 +54,7 @@
                         <th>Empresa</th>
                         <th>Estado</th>
                         <th>Notas</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody id="clientes-body">
@@ -70,7 +63,9 @@
             </table>
         </div>
     </div>
+
     <!-- Script principal -->
     <script src="script.js"></script>
 </body>
 </html>
+
