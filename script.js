@@ -11,14 +11,17 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(data => {
             data.forEach(cliente => {
                 const row = document.createElement("tr");
-                row.innerHTML = `
-                    <td>${cliente.NOMBRE}</td>
-                    <td>${cliente.CORREO}</td>
-                    <td>${cliente.TELÉFONO}</td>
-                    <td>${cliente.EMPRESA}</td>
-                    <td>${cliente.ESTADO}</td>
-                    <td>${cliente.NOTAS}</td>
-                `;
+                
+row.innerHTML = `
+    <td>${cliente.ID}</td>
+    <td>${cliente.NOMBRE}</td>
+    <td>${cliente.CORREO}</td>
+    <td>${cliente.TELÉFONO}</td>
+    <td>${cliente.EMPRESA}</td>
+    <td>${cliente.ESTADO}</td>
+    <td>${cliente.NOTAS}</td>
+`;
+
                 tbody.appendChild(row);
             });
         });
