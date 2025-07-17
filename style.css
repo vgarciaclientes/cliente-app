@@ -1,6 +1,42 @@
 body {
     background-color: #f8f9fa;
+    font-family: 'Segoe UI', sans-serif;
 }
 h1 {
-    color: #0d6efd;
+    color: #343a40;
+    font-weight: 600;
+}
+form {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+input::placeholder,
+textarea::placeholder {
+    color: #adb5bd;
+}
+button.btn-primary {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    transition: background-color 0.3s ease;
+}
+button.btn-primary:hover {
+    background-color: #0b5ed7;
+}
+.table {
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+.table th {
+    background-color: #343a40;
+    color: #ffffff;
+}
+.table td, .table th {
+    vertical-align: middle;
+}
+.table-striped > tbody > tr:nth-of-type(odd) {
+    background-color: #f2f2f2;
 }
