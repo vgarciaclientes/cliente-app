@@ -1,5 +1,4 @@
 
-
 const sheetURL = "https://opensheet.elk.sh/1qllik4uYpXaWtRo4wEj00hY-UromJrNozlwMX4cTreg/Datos_Clientes";
 const postURL = "https://sheetdb.io/api/v1/b521jn1u4z7v0";
 
@@ -14,7 +13,6 @@ document.addEventListener("DOMContentLoaded", () => {
             data.forEach(cliente => {
                 const row = document.createElement("tr");
                 row.innerHTML = `
-               
                     <td>${cliente.NOMBRE}</td>
                     <td>${cliente.CORREO}</td>
                     <td>${cliente.TELÉFONO}</td>
@@ -32,12 +30,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const nuevoCliente = {
             data: {
-                Nombre: document.getElementById("NOMBRE").value,
-                Correo: document.getElementById("CORREO").value,
-                Teléfono: document.getElementById("TELÉFONO").value,
-                Empresa: document.getElementById("EMPRESA").value,
-                Estado: document.getElementById("ESTADO").value,
-                Notas: document.getElementById("NOTAS").value
+                Nombre: document.getElementById("NOMBRE")?.value || "",
+                Correo: document.getElementById("CORREO")?.value || "",
+                Teléfono: document.getElementById("TELÉFONO")?.value || "",
+                Empresa: document.getElementById("EMPRESA")?.value || "",
+                Estado: document.getElementById("ESTADO")?.value || "",
+                Notas: document.getElementById("NOTAS")?.value || ""
             }
         };
 
@@ -60,3 +58,4 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 });
+
