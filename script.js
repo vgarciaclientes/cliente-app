@@ -1,4 +1,3 @@
-
 const sheetURL = "https://opensheet.elk.sh/1qllik4uYpXaWtRo4wEj00hY-UromJrNozlwMX4cTreg/Datos_Clientes";
 const postURL = "https://sheetdb.io/api/v1/b521jn1u4z7v0";
 
@@ -28,20 +27,16 @@ document.addEventListener("DOMContentLoaded", () => {
     form.addEventListener("submit", e => {
         e.preventDefault();
 
-
-        
-const nuevoCliente = {
-    data: {
-        Nombre: document.getElementById("nombre").value,
-        Correo: document.getElementById("correo").value,
-        Teléfono: document.getElementById("telefono").value,
-        Empresa: document.getElementById("empresa").value,
-        Estado: document.getElementById("estado").value,
-        Notas: document.getElementById("notas").value
-    }
-};
-
-      
+        const nuevoCliente = {
+            data: {
+                Nombre: document.getElementById("nombre").value,
+                Correo: document.getElementById("correo").value,
+                Teléfono: document.getElementById("telefono").value,
+                Empresa: document.getElementById("empresa").value,
+                Estado: document.getElementById("estado").value,
+                Notas: document.getElementById("notas").value
+            }
+        };
 
         fetch(postURL, {
             method: "POST",
@@ -59,7 +54,4 @@ const nuevoCliente = {
         .catch(err => {
             console.error("Error al enviar datos:", err);
             alert("Hubo un error al agregar el cliente.");
-        });
-    });
-});
-
+       
