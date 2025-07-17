@@ -20,7 +20,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     <td>${cliente.Estado || ''}</td>
                     <td>${cliente.Notas || ''}</td>
                     <td>
-                        <button onclick="editarCliente('${cliente.ID}')">Editar</button>
+                        <button class="btn btn-sm btn-warning me-1" onclick="editarCliente('${cliente.ID}')">Editar</button>
+                        <button class="btn btn-sm btn-danger" onclick="eliminarCliente('${cliente.ID}')">Eliminar</button>
                     </td>
                 `;
                 tbody.appendChild(row);
@@ -90,4 +91,22 @@ function editarCliente(id) {
             document.getElementById("estado").value = cliente.Estado;
             document.getElementById("notas").value = cliente.Notas;
         });
+}
+
+// Función para eliminar cliente
+function eliminarCliente(id) {
+    if (!confirm("¿Estás seguro de que deseas eliminar este cliente?")) return;
+
+    fetch(`${postURL}/ID/${id}`, {
+        method: "DELETE"
+    })
+    .then(res => res.json())
+    .then(response => {
+        alert("Cliente eliminado correctamente.");
+        location.reload();
+    })
+    .catch(err => {
+        console.error("Error al eliminar cliente:", err);
+        alert("Hubo un error al eliminar el cliente.");
+    });
 }
